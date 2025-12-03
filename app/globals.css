@@ -1,0 +1,303 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 2, 4, 15;
+    --background-end-rgb: 10, 11, 30;
+}
+
+body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(to bottom,
+            rgb(var(--background-start-rgb)),
+            rgb(var(--background-end-rgb)));
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Enhanced Glassmorphism with Cosmic Tints */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.glass-panel:hover {
+    background: rgba(0, 229, 255, 0.05);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    box-shadow: 0 8px 40px rgba(0, 229, 255, 0.15);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+.glass-navbar {
+    background: rgba(2, 4, 15, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+}
+
+/* Premium Text Gradients - Cosmic Colors */
+.text-gradient {
+    background: linear-gradient(135deg, #00E5FF 0%, #2979FF 50%, #651FFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.text-gradient-cyan {
+    background: linear-gradient(135deg, #00E5FF 0%, #2979FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.text-gradient-blue {
+    background: linear-gradient(135deg, #2979FF 0%, #651FFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.text-gradient-purple {
+    background: linear-gradient(135deg, #651FFF 0%, #D500F9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Gradient Text for Metrics */
+.gradient-text {
+    background: linear-gradient(135deg, #00E5FF 0%, #2979FF 50%, #651FFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Premium Button Styles */
+.btn-primary {
+    @apply px-8 py-4 rounded-full bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple text-white font-bold transition-all duration-300 hover:scale-105 hover:shadow-glow-cosmic;
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+}
+
+.btn-secondary {
+    @apply px-8 py-4 rounded-full border-2 border-neon-cyan/40 bg-white/5 backdrop-blur-md text-white font-semibold transition-all duration-300 hover:bg-neon-cyan/10 hover:border-neon-cyan hover:shadow-glow-cyan;
+}
+
+.btn-ghost {
+    @apply px-6 py-3 rounded-full bg-white/5 backdrop-blur-md text-white transition-all duration-300 hover:bg-white/10;
+}
+
+/* Card Effects */
+.card-premium {
+    @apply glass-panel rounded-2xl p-8 transition-all duration-300;
+}
+
+.card-premium:hover {
+    @apply shadow-card-hover;
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* Glow Effects */
+.glow-cosmic {
+    box-shadow: 0 0 40px rgba(41, 121, 255, 0.5);
+}
+
+.glow-cyan {
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+}
+
+.glow-blue {
+    box-shadow: 0 0 30px rgba(41, 121, 255, 0.4);
+}
+
+.glow-purple {
+    box-shadow: 0 0 30px rgba(101, 31, 255, 0.4);
+}
+
+/* Background Blobs with Cosmic Colors */
+@keyframes blob {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+
+    100% {
+        transform: translate(0px, 0px) scale(1);
+    }
+}
+
+.animate-blob {
+    animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+/* Floating Animation */
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Custom Scrollbar - Cosmic Theme */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #02040F;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00E5FF, #651FFF);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2979FF, #D500F9);
+}
+
+/* Utility Classes */
+.section-padding {
+    @apply py-20 px-6 md:px-12 lg:px-24;
+}
+
+.container-width {
+    @apply max-w-7xl mx-auto;
+}
+
+/* Shimmer Effect for Buttons */
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+/* Pulse Glow Animation */
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(101, 31, 255, 0.6);
+    }
+}
+
+.animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Chat Widget Overrides - Updated for Cosmic Theme */
+#chat-bubble {
+    background: linear-gradient(135deg, #00E5FF, #651FFF);
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.5);
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 50;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+}
+
+#chat-bubble:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(0, 229, 255, 0.7);
+}
+
+#chat-window {
+    background-color: #02040F;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    position: fixed;
+    bottom: 6rem;
+    right: 2rem;
+    width: 350px;
+    height: 500px;
+    z-index: 50;
+    border-radius: 1rem;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+#chat-window.open {
+    display: flex;
+}
+
+.user-message {
+    background: linear-gradient(135deg, #00E5FF, #2979FF);
+    color: #02040F;
+    align-self: flex-end;
+}
+
+.ai-message {
+    background-color: #0a0b1e;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.chat-message {
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    margin-bottom: 0.5rem;
+    max-width: 80%;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.ai-message a {
+    color: #00E5FF;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.ai-message a:hover {
+    color: #651FFF;
+}
+
+.chat-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    align-self: flex-start;
+}
+
+.chat-button {
+    background-color: #15162e;
+    border: 1px solid #00E5FF;
+    color: #00E5FF;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.chat-button:hover {
+    background-color: #00E5FF;
+    color: #02040F;
+}

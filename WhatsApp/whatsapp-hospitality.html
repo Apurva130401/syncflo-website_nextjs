@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Hospitality Automation - SyncFlo Ai</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0B0F19',
+                        secondary: '#141A28',
+                        accent: '#00F0FF',
+                        accent2: '#7000FF',
+                        green_accent: '#00FF87',
+                        blue_accent: '#00A3FF',
+                        muted: '#8A8F98',
+                        whatsapp_bg: '#0e151b',
+                        whatsapp_user_bubble: '#005C4B',
+                        whatsapp_ai_bubble: '#202C33',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #0B0F19;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #00FF87, #00A3FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-pattern {
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 255, 135, 0.07) 0%, transparent 25%),
+                             radial-gradient(circle at 80% 60%, rgba(0, 163, 255, 0.07) 0%, transparent 25%);
+        }
+        .feature-card:hover, .use-case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 255, 135, 0.1);
+        }
+        .faq-question { cursor: pointer; }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 500px;
+            padding-top: 1rem;
+        }
+        .faq-arrow { 
+            transition: transform 0.3s ease-in-out;
+        }
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <nav class="fixed w-full z-50 bg-primary/80 backdrop-blur-lg border-b border-white/10">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="whatsapp.html" class="flex items-center">
+                    <div class="text-3xl font-bold font-display">
+                        <span class="gradient-text">SyncFlo</span><span class="text-white">Ai</span>
+                    </div>
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#benefits" class="nav-link text-white/80 hover:text-green_accent transition-colors">Benefits</a>
+                    <a href="#use-cases" class="nav-link text-white/80 hover:text-green_accent transition-colors">Use Cases</a>
+                    <a href="#integrations" class="nav-link text-white/80 hover:text-green_accent transition-colors">Integrations</a>
+                    <a href="#faq" class="nav-link text-white/80 hover:text-green_accent transition-colors">FAQ</a>
+                    <a href="contact.html" class="bg-gradient-to-r from-green_accent to-blue_accent text-primary font-semibold px-6 py-2 rounded-full hover:opacity-90 transition-opacity">Request a Demo</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-white/10">
+            <div class="container mx-auto px-6 py-4 space-y-4">
+                <a href="#benefits" class="nav-link block text-white/80 hover:text-green_accent transition-colors">Benefits</a>
+                <a href="#use-cases" class="nav-link block text-white/80 hover:text-green_accent transition-colors">Use Cases</a>
+                <a href="#integrations" class="nav-link block text-white/80 hover:text-green_accent transition-colors">Integrations</a>
+                <a href="#faq" class="nav-link block text-white/80 hover:text-green_accent transition-colors">FAQ</a>
+                <a href="contact.html" class="block bg-gradient-to-r from-green_accent to-blue_accent text-primary font-semibold px-6 py-2 rounded-full text-center hover:opacity-90 transition-opacity">Request a Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-pattern min-h-screen flex items-center pt-24 pb-16">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <div class="inline-block bg-blue_accent/20 text-blue_accent px-4 py-1 rounded-full text-sm font-medium mb-4" data-aos="fade-down">
+                        WhatsApp for Hospitality
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold font-display leading-tight mb-6" data-aos="fade-down" data-aos-delay="100">
+                        Elevate Guest Experiences with <span class="gradient-text">AI on WhatsApp</span>
+                    </h1>
+                    <p class="text-xl text-white/80 mb-8 max-w-xl mx-auto md:mx-0" data-aos="fade-down" data-aos-delay="200">
+                        Automate bookings, room service, and guest inquiries for hotels and restaurants, providing seamless 24/7 service.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start" data-aos="fade-up" data-aos-delay="300">
+                        <a href="contact.html" class="bg-gradient-to-r from-green_accent to-blue_accent text-primary font-semibold px-8 py-3 rounded-full text-center hover:opacity-90 transition-opacity">
+                            Book a Demo
+                        </a>
+                        <a href="#use-cases" class="nav-link border border-white/20 bg-white/5 backdrop-blur-sm text-white font-semibold px-8 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
+                            See Use Cases
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left" data-aos-delay="200">
+                    <div class="bg-whatsapp_bg p-2 rounded-xl border border-white/10 shadow-2xl max-w-sm mx-auto">
+                        <div class="bg-transparent p-4 rounded-lg">
+                            <div class="flex items-center mb-4 pb-2 border-b border-white/10">
+                                <img src="https://placehold.co/40x40/00FF87/0B0F19?text=H" alt="Hotel Logo" class="rounded-full mr-3">
+                                <div>
+                                    <p class="font-bold text-white">SyncFlo Hotel</p>
+                                    <p class="text-xs text-muted">online</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm text-white h-96 overflow-y-auto p-2">
+                                <div class="flex justify-end">
+                                    <p class="bg-whatsapp_user_bubble p-2 rounded-lg max-w-xs shadow">I'd like to book a table for 2 tonight.</p>
+                                </div>
+                                <div class="flex justify-start">
+                                    <div class="bg-whatsapp_ai_bubble p-2 rounded-lg max-w-xs shadow">
+                                        <p>Of course! What time would you like to book for?</p>
+                                    </div>
+                                </div>
+                                <div class="flex justify-end">
+                                    <p class="bg-whatsapp_user_bubble p-2 rounded-lg max-w-xs shadow">8:00 PM please.</p>
+                                </div>
+                                <div class="flex justify-start">
+                                    <div class="bg-whatsapp_ai_bubble p-2 rounded-lg max-w-xs shadow">
+                                        <p>Your table for 2 at 8:00 PM is confirmed. We look forward to seeing you!</p>
+                                    </div>
+                                </div>
+                                 <div class="flex justify-start">
+                                    <div class="bg-whatsapp_ai_bubble p-2 rounded-lg max-w-xs shadow">
+                                        <p>While you're here, would you like to see our menu or request any special arrangements?</p>
+                                        <button class="w-full mt-2 bg-gradient-to-r from-green_accent to-blue_accent text-primary font-bold py-2 px-4 rounded-lg text-sm">View Menu</button>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="flex items-center mt-4 space-x-2">
+                                <div class="flex-grow bg-whatsapp_ai_bubble rounded-full flex items-center px-3 py-2">
+                                    <svg class="w-6 h-6 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <p class="text-muted ml-2">Message</p>
+                                </div>
+                                <button class="bg-green-500 rounded-full p-3">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"></path></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="py-20 bg-secondary">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Improve Guest Satisfaction & <span class="gradient-text">Boost Revenue</span></h2>
+                <p class="text-white/70 max-w-2xl mx-auto">SyncFlo Ai helps hospitality businesses automate operations and provide exceptional guest experiences.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card bg-primary/80 backdrop-blur-sm p-8 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-blue_accent/10 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="h-8 w-8 text-blue_accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold font-display mb-3">24/7 Concierge Service</h3>
+                    <p class="text-white/70 mb-4">Provide instant responses to guest inquiries, handle bookings, and offer recommendations around the clock.</p>
+                </div>
+                
+                <div class="feature-card bg-primary/80 backdrop-blur-sm p-8 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-blue_accent/10 rounded-lg flex items-center justify-center mb-6">
+                       <svg class="h-8 w-8 text-blue_accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold font-display mb-3">Increased Direct Bookings</h3>
+                    <p class="text-white/70 mb-4">Drive more direct bookings through WhatsApp, reducing reliance on third-party booking platforms and saving on commissions.</p>
+                </div>
+
+                <div class="feature-card bg-primary/80 backdrop-blur-sm p-8 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-blue_accent/10 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="h-8 w-8 text-blue_accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold font-display mb-3">Enhanced Guest Loyalty</h3>
+                    <p class="text-white/70 mb-4">Provide a seamless and personalized guest experience that encourages repeat business and positive reviews.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <section id="use-cases" class="py-20 bg-primary">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Key Use Cases for <span class="gradient-text">Hospitality</span></h2>
+                <p class="text-white/70 max-w-2xl mx-auto">See how SyncFlo Ai can transform your hospitality business.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="use-case-card bg-secondary p-6 rounded-xl border border-white/10 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="font-bold text-lg mb-2">Automated Reservations</h3>
+                    <p class="text-white/70 text-sm">Book rooms or tables, manage reservations, and send confirmations directly through WhatsApp.</p>
+                </div>
+                <div class="use-case-card bg-secondary p-6 rounded-xl border border-white/10 transition-all duration-300" data-aos="fade-up" data-aos-delay="150">
+                    <h3 class="font-bold text-lg mb-2">Room Service & Requests</h3>
+                    <p class="text-white/70 text-sm">Allow guests to order room service or make special requests (e.g., extra towels, late checkout) via chat.</p>
+                </div>
+                <div class="use-case-card bg-secondary p-6 rounded-xl border border-white/10 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="font-bold text-lg mb-2">Instant Answers & FAQs</h3>
+                    <p class="text-white/70 text-sm">Respond to common questions about amenities, hours, policies, and local attractions 24/7.</p>
+                </div>
+                <div class="use-case-card bg-secondary p-6 rounded-xl border border-white/10 transition-all duration-300" data-aos="fade-up" data-aos-delay="250">
+                    <h3 class="font-bold text-lg mb-2">Feedback Collection</h3>
+                    <p class="text-white/70 text-sm">Automatically send post-stay or post-dining messages to collect valuable feedback and reviews.</p>
+                </div>
+                <div class="use-case-card bg-secondary p-6 rounded-xl border border-white/10 transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="font-bold text-lg mb-2">Promotional Campaigns</h3>
+                    <p class="text-white/70 text-sm">Send targeted offers, event invitations, and special promotions to your customer base.</p>
+                </div>
+                <div class="use-case-card bg-secondary p-6 rounded-xl border border-white/10 transition-all duration-300" data-aos="fade-up" data-aos-delay="350">
+                    <h3 class="font-bold text-lg mb-2">Upselling & Cross-selling</h3>
+                    <p class="text-white/70 text-sm">Offer room upgrades, spa packages, or special menu items to guests before and during their stay.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="integrations" class="py-20 bg-secondary">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2" data-aos="fade-right">
+                     <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Seamlessly Integrated with <span class="gradient-text">Your Tech Stack</span></h2>
+                     <p class="text-white/70 mb-6">SyncFlo Ai connects directly to the hospitality platforms and tools you already use, enabling a powerful, unified system for guest management.</p>
+                     <ul class="space-y-4 text-white/90">
+                        <li class="flex items-start"><svg class="h-5 w-5 mr-3 mt-1 text-green_accent flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg><span><strong>Booking Engines & PMS:</strong> Sync reservations, guest data, and availability with your Property Management System (PMS) and booking engines.</span></li>
+                        <li class="flex items-start"><svg class="h-5 w-5 mr-3 mt-1 text-green_accent flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg><span><strong>POS Systems:</strong> Integrate with Point of Sale (POS) systems for seamless ordering and billing for restaurants and room service.</span></li>
+                     </ul>
+                </div>
+                 <div class="md:w-1/2" data-aos="fade-left">
+                    <div class="relative flex items-center justify-center">
+                        <svg class="w-full h-auto" viewBox="0 0 400 300">
+                            <defs>
+                                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="8" result="blur" />
+                                    <feMerge>
+                                        <feMergeNode in="blur" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <g transform="translate(170, 120)">
+                                <circle cx="30" cy="30" r="40" fill="#141A28" stroke="#00A3FF" stroke-width="2"/>
+                                <text x="30" y="35" font-family="Space Grotesk, sans-serif" font-size="12" fill="#00A3FF" text-anchor="middle" font-weight="bold">SyncFlo</text>
+                            </g>
+                            <path d="M 200 150 Q 100 150 80 80" stroke="#8A8F98" stroke-width="1" fill="none" stroke-dasharray="4 4"/>
+                            <path d="M 200 150 Q 200 250 150 230" stroke="#8A8F98" stroke-width="1" fill="none" stroke-dasharray="4 4"/>
+                            <path d="M 200 150 Q 300 150 320 80" stroke="#8A8F98" stroke-width="1" fill="none" stroke-dasharray="4 4"/>
+                            <path d="M 200 150 Q 200 250 250 230" stroke="#8A8F98" stroke-width="1" fill="none" stroke-dasharray="4 4"/>
+                            <text x="80" y="60" font-family="Inter, sans-serif" font-size="14" fill="white" text-anchor="middle">PMS</text>
+                            <text x="320" y="60" font-family="Inter, sans-serif" font-size="14" fill="white" text-anchor="middle">Booking Engine</text>
+                            <text x="150" y="250" font-family="Inter, sans-serif" font-size="14" fill="white" text-anchor="middle">POS</text>
+                            <text x="250" y="250" font-family="Inter, sans-serif" font-size="14" fill="white" text-anchor="middle">CRM</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="faq" class="py-20 bg-primary">
+        <div class="container mx-auto px-6">
+             <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Hospitality AI <span class="gradient-text">Questions</span></h2>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="faq-item bg-secondary/50 rounded-lg border border-white/10">
+                    <div class="faq-question flex justify-between items-center p-6">
+                        <h3 class="text-lg font-semibold">How does the AI handle booking and reservation requests?</h3>
+                        <svg class="faq-arrow w-6 h-6 text-green_accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-white/70 px-6 pb-6">
+                           Our AI can integrate with your existing booking system to check real-time availability, make reservations, and send instant confirmations to guests, all within WhatsApp.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-secondary border-t border-white/10">
+        <div class="container mx-auto px-6 text-center text-white/70">
+                         <div class="flex justify-center space-x-6 mb-6">
+                <a href="data-processing.html" class="hover:text-accent transition-colors">Data Processing</a>
+                <a href="terms.html" class="hover:text-accent transition-colors">Terms of Service</a>
+                <a href="privacy-policy.html" class="hover:text-accent transition-colors">Privacy Policy</a>
+                <a href="sitemap.xml" class="hover:text-accent transition-colors">Sitemap</a>
+            </div>
+            
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true, 
+        });
+
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.closest('.faq-item');
+                item.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>
+

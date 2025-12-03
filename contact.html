@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SyncFlo Ai</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0B0F19',
+                        secondary: '#141A28',
+                        accent: '#00F0FF',
+                        accent2: '#7000FF',
+                        muted: '#8A8F98'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B0F19;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #00F0FF, #7000FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-pattern {
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 20%),
+                             radial-gradient(circle at 80% 60%, rgba(112, 0, 255, 0.05) 0%, transparent 20%);
+        }
+        
+        /* Custom styling for select dropdown arrow */
+        select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%238A8F98' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        /* Adding smooth transitions for hover effects */
+        .hover-effect {
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .hover-effect:hover {
+            transform: translateY(-2px);
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav class="fixed w-full z-50 bg-primary/80 backdrop-blur-lg border-b border-white/10">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <div class="text-3xl font-bold font-display">
+                        <span class="gradient-text">SyncFlo</span><span class="text-white">Ai</span>
+                    </div>
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html#features" class="text-white/80 hover:text-accent transition-colors">Features</a>
+                    <a href="index.html#products" class="text-white/80 hover:text-accent transition-colors">Products</a>
+                    <a href="index.html#testimonials" class="text-white/80 hover:text-accent transition-colors">Testimonials</a>
+                    <a href="index.html#about" class="text-white/80 hover:text-accent transition-colors">About</a>
+                    <a href="contact.html" class="bg-gradient-to-r from-accent to-accent2 text-primary font-semibold px-6 py-2 rounded-full hover:opacity-90 transition-opacity">Contact Us</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-white/10">
+            <div class="container mx-auto px-6 py-4 space-y-4">
+                <a href="index.html#features" class="block text-white/80 hover:text-accent transition-colors">Features</a>
+                <a href="index.html#products" class="block text-white/80 hover:text-accent transition-colors">Products</a>
+                <a href="index.html#testimonials" class="block text-white/80 hover:text-accent transition-colors">Testimonials</a>
+                <a href="index.html#about" class="block text-white/80 hover:text-accent transition-colors">About</a>
+                <a href="contact.html" class="block bg-gradient-to-r from-accent to-accent2 text-primary font-semibold px-6 py-2 rounded-full text-center hover:opacity-90 transition-opacity">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="hero-pattern pt-32 pb-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl md:text-5xl font-bold font-display mb-4" data-aos="fade-down">Contact <span class="gradient-text">Us</span></h1>
+                    <p class="text-white/70 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">Have a question or want to request a demo? Fill out the form below and we'll get back to you as soon as possible.</p>
+                </div>
+                
+                <div class="bg-secondary/80 backdrop-blur-sm p-8 rounded-xl border border-white/10" data-aos="zoom-in-up" data-aos-delay="200">
+                    <form id="contactForm" name="contact" method="POST" data-netlify="true" action="thank.html" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contact" />
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="first-name" class="block text-sm font-medium text-white/80 mb-2">First Name</label>
+                                <input type="text" id="first-name" name="first-name" required class="w-full bg-primary/80 border border-white/10 rounded-lg px-4 py-2 focus:ring-accent focus:border-accent transition-colors" placeholder="John">
+                            </div>
+                             <div>
+                                <label for="last-name" class="block text-sm font-medium text-white/80 mb-2">Last Name</label>
+                                <input type="text" id="last-name" name="last-name" required class="w-full bg-primary/80 border border-white/10 rounded-lg px-4 py-2 focus:ring-accent focus:border-accent transition-colors" placeholder="Doe">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="business-email" class="block text-sm font-medium text-white/80 mb-2">Business Email</label>
+                                <input type="email" id="business-email" name="business-email" required class="w-full bg-primary/80 border border-white/10 rounded-lg px-4 py-2 focus:ring-accent focus:border-accent transition-colors" placeholder="john.doe@business.com">
+                            </div>
+                            <div>
+                                <label for="business-name" class="block text-sm font-medium text-white/80 mb-2">Business Name</label>
+                                <input type="text" id="business-name" name="business-name" required class="w-full bg-primary/80 border border-white/10 rounded-lg px-4 py-2 focus:ring-accent focus:border-accent transition-colors" placeholder="Acme Corporation">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                             <div>
+                                <label for="industry" class="block text-sm font-medium text-white/80 mb-2">Industry</label>
+                                <select id="industry" name="industry" required class="w-full bg-primary/80 border border-white/10 rounded-lg px-4 py-2 focus:ring-accent focus:border-accent transition-colors">
+                                    <option value="" disabled selected>Select an Industry</option>
+                                    <option value="Real Estate">Real Estate</option>
+                                    <option value="E-commerce">E-commerce</option>
+                                    <option value="Hospitality">Hospitality</option>
+                                    <option value="Automotive">Automotive</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="whatsapp" class="block text-sm font-medium text-white/80 mb-2">WhatsApp Number (with Country Code)</label>
+                                <input type="tel" id="whatsapp" name="whatsapp" class="w-full bg-primary/80 border border-white/10 rounded-lg px-4 py-2 focus:ring-accent focus:border-accent transition-colors" placeholder="+1 (555) 123-4567">
+                            </div>
+                        </div>
+                        
+                        <div id="other-industry-wrapper" class="hidden mb-6">
+                             <label for="other-industry" class="block text-sm font-medium text-white/80 mb-2">Please Specify Your Industry</label>
+                             <input type="text" id="other-industry" name="other-industry" class="w-full bg-primary/80 border border-white/10 rounded-lg px-4 py-2 focus:ring-accent focus:border-accent transition-colors" placeholder="e.g., Healthcare, Education">
+                        </div>
+
+                        <div class="mb-6">
+                             <label for="customer-queries" class="block text-sm font-medium text-white/80 mb-2">How many customer queries do you get per month?</label>
+                             <select id="customer-queries" name="customer-queries" required class="w-full bg-primary/80 border border-white/10 rounded-lg px-4 py-2 focus:ring-accent focus:border-accent transition-colors">
+                                <option value="" disabled selected>Select a range</option>
+                                <option value="1-50">1-50</option>
+                                <option value="50-250">50-250</option>
+                                <option value="250-1000">250-1000</option>
+                                <option value="1000+">1000+</option>
+                             </select>
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="query" class="block text-sm font-medium text-white/80 mb-2">Your Query</label>
+                            <textarea id="query" name="query" rows="5" required class="w-full bg-primary/80 border border-white/10 rounded-lg px-4 py-2 focus:ring-accent focus:border-accent transition-colors" placeholder="I'd like to learn more about the Enterprise Suite and request a demo..."></textarea>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="bg-gradient-to-r from-accent to-accent2 text-primary font-semibold px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg transform hover:scale-105">
+                                🚀 Unleash the AI
+                            </button>
+                        </div>
+                    </form>
+                    <div id="form-submission-message" class="hidden mt-6 text-center text-accent font-medium">
+                        Thank you for your message! We'll be in touch soon.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="py-8 bg-primary border-t border-white/10" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+        <div class="container mx-auto px-6 text-center text-white/70">
+            <div class="flex justify-center space-x-6 mb-4">
+                 <a href="#" class="hover:text-accent hover-effect" aria-label="Facebook">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="#" class="hover:text-accent hover-effect" aria-label="Instagram">
+                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="#" class="hover:text-accent hover-effect" aria-label="LinkedIn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="#" class="hover:text-accent hover-effect" aria-label="GitHub">
+                   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.852 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.003 10.003 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                </a>
+            </div>
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="data-processing.html" class="hover:text-accent hover-effect">Data Processing</a>
+                <a href="terms.html" class="hover:text-accent hover-effect">Terms of Service</a>
+                <a href="privacy-policy.html" class="hover:text-accent hover-effect">Privacy Policy</a>
+                <a href="sitemap.xml" class="hover:text-accent hover-effect">Sitemap</a>
+            </div>
+             <p class="mt-4">&copy; 2024 SyncFlo Ai. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800, // Animation duration in milliseconds
+            once: true,    // Whether animation should happen only once
+        });
+
+        // --- All other scripts from before ---
+
+        // JavaScript for mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // NOTE: The original form submission script has been removed.
+        // The script below intercepted the form submission using `e.preventDefault()`,
+        // which would prevent Netlify from processing the form. By removing it,
+        // the form will now submit directly to Netlify's backend.
+        // After a user submits the form, they will be redirected to Netlify's
+        // default "Thank You" page.
+        /*
+        const contactForm = document.getElementById('contactForm');
+        const formSubmissionMessage = document.getElementById('form-submission-message');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            formSubmissionMessage.classList.remove('hidden');
+            contactForm.reset();
+            document.getElementById('other-industry-wrapper').classList.add('hidden');
+            setTimeout(() => {
+                formSubmissionMessage.classList.add('hidden');
+            }, 5000);
+        });
+        */
+
+        // Logic for 'Other' industry field
+        const industryDropdown = document.getElementById('industry');
+        const otherIndustryWrapper = document.getElementById('other-industry-wrapper');
+        const otherIndustryInput = document.getElementById('other-industry');
+
+        industryDropdown.addEventListener('change', function() {
+            if (this.value === 'Other') {
+                otherIndustryWrapper.classList.remove('hidden');
+                otherIndustryInput.required = true;
+            } else {
+                otherIndustryWrapper.classList.add('hidden');
+                otherIndustryInput.required = false;
+                otherIndustryInput.value = '';
+            }
+        });
+
+        // --- Chatbot Scripts ---
+
+        const chatBubble = document.getElementById('chat-bubble');
+        const chatWindow = document.getElementById('chat-window');
+        const closeChat = document.getElementById('close-chat');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatSend = document.getElementById('chat-send');
+        const generatePitchButton = document.getElementById('generate-pitch');
+        
+        // IMPORTANT: Add your own Gemini API Key here
+        const apiKey = "AIzaSyDftfcS4AQNPYo3Q2joZmYikWB4vpO_SfI"; 
+
+        // --- Function Calling Setup ---
+
+        // 1. Define the tools (our JavaScript functions)
+        const tools = {
+            redirectToCalendly(name, email) {
+                const calendlyUrl = `https://calendly.com/syncfloai/30min?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
+                window.open(calendlyUrl, '_blank');
+                return `Success! I have opened the Calendly booking page for ${name}.`;
+            },
+            displayButtons(buttons) {
+                 return `Displayed buttons: ${buttons.join(', ')}`;
+            },
+            openLink(url) {
+                window.open(url, '_blank');
+                return `Successfully opened ${url}`;
+            }
+        };
+
+        // 2. Define the tools' schema for the AI
+        const toolDefinitions = [{
+            "functionDeclarations": [{
+                "name": "redirectToCalendly",
+                "description": "After collecting the user's name and email, use this function to redirect them to the Calendly page to book a demo.",
+                "parameters": {
+                    "type": "OBJECT",
+                    "properties": {
+                        "name": { "type": "STRING", "description": "The user's full name." },
+                        "email": { "type": "STRING", "description": "The user's email address." }
+                    },
+                    "required": ["name", "email"]
+                }
+            }, {
+                 "name": "displayButtons",
+                "description": "Display clickable suggestion buttons to the user in the chat.",
+                "parameters": {
+                    "type": "OBJECT",
+                    "properties": {
+                        "buttons": {
+                            "type": "ARRAY",
+                            "description": "An array of button labels to display.",
+                            "items": { "type": "STRING" }
+                        }
+                    },
+                    "required": ["buttons"]
+                }
+            }, {
+                "name": "openLink",
+                "description": "Use this function to open any URL in a new browser tab.",
+                "parameters": {
+                    "type": "OBJECT",
+                    "properties": {
+                        "url": { "type": "STRING", "description": "The full URL to open." }
+                    },
+                    "required": ["url"]
+                }
+            }]
+        }];
+        
+        // 3. Define the initial prompt for the AI
+        let chatHistory = [{
+            role: "user",
+            parts: [{ text: "You are a fun, friendly and helpful Sales assistant for SyncFlo Ai. You are talking on behalf of SyncFlo and your goal is to answer questions about the company and its products (WhatsApp Automation, AI Voice Sales Agent). Your primary goal is to understand the user's needs and explain how SyncFlo's products can solve their problems. Only suggest a demo when it's a natural next step. If a user wants to book a demo, you MUST first ask them if they want a mock demo or a live demo by calling the `displayButtons` tool with the options 'Show me a mock demo' and 'Book a live demo'. If they choose live demo, you MUST use the `redirectToCalendly` tool after getting their name and email. If they choose mock demo, tell the user they can see it on our website and by calling the 'displayButtons' tool with options 'Go to Demo Page' and 'Go to Industry Page' and when the user clicks the 'Go to Demo Page' button, immediately use the 'openlink' tool and open 'https://syncflo.xyz/demo'. And If the user chooses 'Go to Industry Page', immediatley use the 'openlink' tool and open 'https://syncflo.xyz/whatsapp-industry'. If a user asks about pricing, tell them it starts at $99/month and then immediately use the `openLink` tool to show them the full details at 'https://syncflo.xyz/pricing.html'. Keep messages short. Do not make up information. Also the founder of SyncFlo AI is Apurva" }]
+        }, {
+            role: "model",
+            parts: [{ text: "Okay, I understand. My main goal is to be a helpful sales assistant, understand customer needs, and explain how our products can help. I will use my tools to provide demos and pricing information when appropriate. How can I help you today?" }]
+        }];
+
+
+        // --- Chat Logic ---
+
+        chatBubble.addEventListener('click', () => chatWindow.classList.toggle('open'));
+        closeChat.addEventListener('click', () => chatWindow.classList.remove('open'));
+
+        function addMessage(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chat-message', sender === 'user' ? 'user-message' : 'ai-message');
+
+            if (sender === 'ai') {
+                const urlRegex = /(https?:\/\/[^\s]+)/g;
+                const sanitizedMessage = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                const messageWithLinks = sanitizedMessage.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer" class="font-bold underline">$1</a>');
+                messageElement.innerHTML = messageWithLinks;
+            } else {
+                messageElement.textContent = message;
+            }
+            
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function showTypingIndicator() {
+            const typingElement = document.createElement('div');
+            typingElement.id = 'typing-indicator';
+            typingElement.classList.add('chat-message', 'ai-message');
+            typingElement.innerHTML = `<div class="flex items-center space-x-1"><span class="w-2 h-2 bg-white/50 rounded-full animate-pulse" style="animation-delay: 0s;"></span><span class="w-2 h-2 bg-white/50 rounded-full animate-pulse" style="animation-delay: 0.2s;"></span><span class="w-2 h-2 bg-white/50 rounded-full animate-pulse" style="animation-delay: 0.4s;"></span></div>`;
+            chatMessages.appendChild(typingElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function removeTypingIndicator() {
+            const typingElement = document.getElementById('typing-indicator');
+            if (typingElement) typingElement.remove();
+        }
+
+        async function handleAiResponse(response) {
+            removeTypingIndicator();
+            const candidate = response.candidates[0];
+
+            if (!candidate || !candidate.content || !candidate.content.parts) {
+                addMessage("Sorry, I received an invalid response. Please try again.", 'ai');
+                return;
+            }
+
+            const modelResponsePart = { role: "model", parts: [] };
+            let textResponse = null;
+            let functionCall = null;
+
+            candidate.content.parts.forEach(part => {
+                if (part.text) {
+                    textResponse = part.text;
+                    modelResponsePart.parts.push({ text: textResponse });
+                } else if (part.functionCall) {
+                    functionCall = part.functionCall;
+                    modelResponsePart.parts.push({ functionCall: functionCall });
+                }
+            });
+
+            // Add the full model response to history first
+            if (modelResponsePart.parts.length > 0) {
+                 chatHistory.push(modelResponsePart);
+            }
+
+            // Then, process the parts for the UI
+            if (textResponse) {
+                addMessage(textResponse, 'ai');
+            }
+
+            if (functionCall) {
+                const functionName = functionCall.name;
+                const functionArgs = functionCall.args;
+                
+                // Add the function's result to history so the AI knows what happened
+                const functionResponse = {
+                    role: "function",
+                    parts: [{ functionResponse: { name: functionName, response: {} } }]
+                };
+                
+                if (functionName === 'displayButtons') {
+                    const buttonContainer = document.createElement('div');
+                    buttonContainer.className = 'chat-buttons';
+                    functionArgs.buttons.forEach(label => {
+                        const button = document.createElement('button');
+                        button.className = 'chat-button';
+                        button.textContent = label;
+                        button.addEventListener('click', () => {
+                            sendMessage(label);
+                            buttonContainer.remove();
+                        });
+                        buttonContainer.appendChild(button);
+                    });
+                    chatMessages.appendChild(buttonContainer);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    // We don't call the API again, we wait for the user click
+                } else if (functionName === 'redirectToCalendly' || functionName === 'openLink') {
+                    const functionResult = tools[functionName](functionArgs.name || functionArgs.url, functionArgs.email);
+                    functionResponse.parts[0].functionResponse.response.content = functionResult;
+                    chatHistory.push(functionResponse);
+                    await callGeminiApi(); // Call again to get the confirmation text
+                }
+            }
+        }
+
+        async function callGeminiApi(prompt = null) {
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                
+                const currentHistory = prompt ? [...chatHistory, { role: 'user', parts: [{ text: prompt }] }] : chatHistory;
+
+                const payload = { 
+                    contents: currentHistory,
+                    tools: toolDefinitions
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorBody = await response.text();
+                    console.error("API Error Body:", errorBody);
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+                
+                const result = await response.json();
+                await handleAiResponse(result);
+
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                removeTypingIndicator();
+                addMessage("Sorry, something went wrong. Please check your API key and the console for details.", 'ai');
+            }
+        }
+
+        async function generateQuickPitch() {
+            showTypingIndicator();
+            const prompt = `Based on the conversation history and SyncFlo Ai's products (WhatsApp Automation and AI Voice Sales Agent), write a short, compelling sales pitch for a business. The pitch should be no more than 3 sentences. Do not use any placeholders like [Client Name] or [Your Company].`;
+            
+            // Clear history and add new prompt to get a fresh pitch
+            const pitchHistory = [{
+                role: "user",
+                parts: [{ text: prompt }]
+            }];
+
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                
+                const payload = { 
+                    contents: pitchHistory
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorBody = await response.text();
+                    console.error("API Error Body:", errorBody);
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+                
+                const result = await response.json();
+                removeTypingIndicator();
+                
+                const generatedPitch = result.candidates[0].content.parts[0].text;
+                addMessage(`✨ Here is a quick pitch for you: "${generatedPitch}"`, 'ai');
+
+            } catch (error) {
+                console.error("Error generating pitch:", error);
+                removeTypingIndicator();
+                addMessage("Sorry, I couldn't generate a pitch right now. Please try again.", 'ai');
+            }
+        }
+
+        async function sendMessage(messageOverride = null) {
+            const messageText = messageOverride || chatInput.value.trim();
+            if (messageText === '') return;
+
+            addMessage(messageText, 'user');
+            if (!messageOverride) {
+                chatInput.value = '';
+            }
+            showTypingIndicator();
+            
+            chatHistory.push({ role: "user", parts: [{ text: messageText }] });
+            await callGeminiApi();
+        }
+
+        chatSend.addEventListener('click', () => sendMessage());
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        generatePitchButton.addEventListener('click', () => generateQuickPitch());
+
+    </script>
+</body>
+</html>

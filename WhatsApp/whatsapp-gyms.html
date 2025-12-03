@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Fitness Automation - SyncFlo Ai</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0B0F19',
+                        secondary: '#141A28',
+                        accent: '#00F0FF',
+                        accent2: '#7000FF',
+                        green_accent: '#00FF87',
+                        blue_accent: '#00A3FF',
+                        muted: '#8A8F98',
+                        whatsapp_bg: '#0e151b',
+                        whatsapp_user_bubble: '#005C4B',
+                        whatsapp_ai_bubble: '#202C33',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #0B0F19;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #00FF87, #00A3FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-pattern {
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 255, 135, 0.07) 0%, transparent 25%),
+                             radial-gradient(circle at 80% 60%, rgba(0, 163, 255, 0.07) 0%, transparent 25%);
+        }
+        .feature-card:hover, .use-case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 255, 135, 0.1);
+        }
+        .faq-question { cursor: pointer; }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 500px; /* Adjust as needed */
+            padding-top: 1rem;
+        }
+        .faq-arrow { 
+            transition: transform 0.3s ease-in-out;
+        }
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+        .chat-bubble {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .chat-bubble.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav class="fixed w-full z-50 bg-primary/80 backdrop-blur-lg border-b border-white/10">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="whatsapp.html" class="flex items-center">
+                    <div class="text-3xl font-bold font-display">
+                        <span class="gradient-text">SyncFlo</span><span class="text-white">Ai</span>
+                    </div>
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#benefits" class="nav-link text-white/80 hover:text-green_accent transition-colors">Benefits</a>
+                    <a href="#use-cases" class="nav-link text-white/80 hover:text-green_accent transition-colors">Use Cases</a>
+                    <a href="#integrations" class="nav-link text-white/80 hover:text-green_accent transition-colors">Integrations</a>
+                    <a href="#faq" class="nav-link text-white/80 hover:text-green_accent transition-colors">FAQ</a>
+                    <a href="contact.html" class="bg-gradient-to-r from-green_accent to-blue_accent text-primary font-semibold px-6 py-2 rounded-full hover:opacity-90 transition-opacity">Request a Demo</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-white/10">
+            <div class="container mx-auto px-6 py-4 space-y-4">
+                <a href="#benefits" class="nav-link block text-white/80 hover:text-green_accent transition-colors">Benefits</a>
+                <a href="#use-cases" class="nav-link block text-white/80 hover:text-green_accent transition-colors">Use Cases</a>
+                <a href="#integrations" class="nav-link block text-white/80 hover:text-green_accent transition-colors">Integrations</a>
+                <a href="#faq" class="nav-link block text-white/80 hover:text-green_accent transition-colors">FAQ</a>
+                <a href="contact.html" class="block bg-gradient-to-r from-green_accent to-blue_accent text-primary font-semibold px-6 py-2 rounded-full text-center hover:opacity-90 transition-opacity">Request a Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-pattern min-h-screen flex items-center pt-24 pb-16">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <div class="inline-block bg-blue_accent/20 text-blue_accent px-4 py-1 rounded-full text-sm font-medium mb-4" data-aos="fade-down">
+                        WhatsApp for Gyms & Fitness
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold font-display leading-tight mb-6" data-aos="fade-down" data-aos-delay="100">
+                        Boost Member Engagement with <span class="gradient-text">AI on WhatsApp</span>
+                    </h1>
+                    <p class="text-xl text-white/80 mb-8 max-w-xl mx-auto md:mx-0" data-aos="fade-down" data-aos-delay="200">
+                        Automate class bookings, membership inquiries, and workout reminders for your gym or fitness center.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start" data-aos="fade-up" data-aos-delay="300">
+                        <a href="contact.html" class="bg-gradient-to-r from-green_accent to-blue_accent text-primary font-semibold px-8 py-3 rounded-full text-center hover:opacity-90 transition-opacity">
+                            Book a Demo
+                        </a>
+                        <a href="#use-cases" class="nav-link border border-white/20 bg-white/5 backdrop-blur-sm text-white font-semibold px-8 py-3 rounded-full text-center hover:bg-white/10 transition-colors">
+                            See Use Cases
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left" data-aos-delay="200">
+                    <div class="bg-whatsapp_bg p-2 rounded-xl border border-white/10 shadow-2xl max-w-sm mx-auto">
+                        <div class="bg-transparent p-4 rounded-lg">
+                            <div class="flex items-center mb-4 pb-2 border-b border-white/10">
+                                <img src="https://placehold.co/40x40/00FF87/0B0F19?text=F" alt="Fitness Center Logo" class="rounded-full mr-3">
+                                <div>
+                                    <p class="font-bold text-white">SyncFlo Fitness</p>
+                                    <p class="text-xs text-muted">online</p>
+                                </div>
+                            </div>
+                            <div id="chat-window" class="space-y-3 text-sm text-white h-96 overflow-y-auto p-2">
+                                <!-- Chat messages will be injected here by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="py-20 bg-secondary">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Streamline Operations & <span class="gradient-text">Keep Members Motivated</span></h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card bg-primary/80 p-8 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold font-display mb-3">Effortless Class Booking</h3>
+                    <p class="text-white/70">Allow members to view schedules and book classes 24/7, filling your classes and reducing admin work.</p>
+                </div>
+                <div class="feature-card bg-primary/80 p-8 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-bold font-display mb-3">Increased Member Retention</h3>
+                    <p class="text-white/70">Keep members engaged with personalized reminders, motivational messages, and community updates.</p>
+                </div>
+                <div class="feature-card bg-primary/80 p-8 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-xl font-bold font-display mb-3">24/7 Membership Sales</h3>
+                    <p class="text-white/70">Answer questions about membership plans and pricing, and guide new members through the sign-up process anytime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="use-cases" class="py-20 bg-primary">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Key Use Cases for <span class="gradient-text">Gyms & Fitness Centers</span></h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="use-case-card bg-secondary p-6 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="font-bold text-lg mb-2">Class Scheduling & Reminders</h3>
+                    <p class="text-white/70 text-sm">Automate class bookings, cancellations, and send reminders to reduce no-shows.</p>
+                </div>
+                <div class="use-case-card bg-secondary p-6 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="150">
+                    <h3 class="font-bold text-lg mb-2">Membership Management</h3>
+                    <p class="text-white/70 text-sm">Handle new membership inquiries, renewals, and payment reminders automatically.</p>
+                </div>
+                <div class="use-case-card bg-secondary p-6 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="font-bold text-lg mb-2">Personal Training Bookings</h3>
+                    <p class="text-white/70 text-sm">Allow members to book sessions with personal trainers based on their availability.</p>
+                </div>
+                <div class="use-case-card bg-secondary p-6 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="250">
+                    <h3 class="font-bold text-lg mb-2">Promotional Broadcasts</h3>
+                    <p class="text-white/70 text-sm">Send out information on new classes, challenges, and special offers to all members.</p>
+                </div>
+                <div class="use-case-card bg-secondary p-6 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="font-bold text-lg mb-2">Feedback & Surveys</h3>
+                    <p class="text-white/70 text-sm">Collect feedback on classes and facilities to continuously improve your services.</p>
+                </div>
+                <div class="use-case-card bg-secondary p-6 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="350">
+                    <h3 class="font-bold text-lg mb-2">Member Support</h3>
+                    <p class="text-white/70 text-sm">Provide 24/7 support for common questions about facilities, hours, and policies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="integrations" class="py-20 bg-secondary">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2" data-aos="fade-right">
+                     <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Integrates with Your <span class="gradient-text">Fitness Software</span></h2>
+                     <p class="text-white/70 mb-6">SyncFlo Ai connects with popular gym management and booking software.</p>
+                     <ul class="space-y-4 text-white/90">
+                        <li class="flex items-start"><svg class="h-5 w-5 mr-3 mt-1 text-green_accent flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg><span><strong>Membership Management Software:</strong> Sync member data, class schedules, and booking information.</span></li>
+                        <li class="flex items-start"><svg class="h-5 w-5 mr-3 mt-1 text-green_accent flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg><span><strong>Payment Gateways:</strong> Handle membership payments and class fees directly through WhatsApp.</span></li>
+                     </ul>
+                </div>
+                 <div class="md:w-1/2" data-aos="fade-left">
+                    <div class="relative flex items-center justify-center">
+                        <svg class="w-full h-auto" viewBox="0 0 400 300">
+                            <g transform="translate(170, 120)">
+                                <circle cx="30" cy="30" r="40" fill="#141A28" stroke="#00A3FF" stroke-width="2"/>
+                                <text x="30" y="35" font-family="Space Grotesk, sans-serif" font-size="12" fill="#00A3FF" text-anchor="middle" font-weight="bold">SyncFlo</text>
+                            </g>
+                            <path d="M 200 150 Q 100 150 80 80" stroke="#8A8F98" stroke-width="1" fill="none" stroke-dasharray="4 4"/>
+                            <path d="M 200 150 Q 300 150 320 80" stroke="#8A8F98" stroke-width="1" fill="none" stroke-dasharray="4 4"/>
+                            <text x="80" y="60" font-family="Inter, sans-serif" font-size="14" fill="white" text-anchor="middle">Management Software</text>
+                            <text x="320" y="60" font-family="Inter, sans-serif" font-size="14" fill="white" text-anchor="middle">Payment Gateway</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-primary">
+        <div class="container mx-auto px-6">
+             <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Fitness AI <span class="gradient-text">Questions</span></h2>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="faq-item bg-secondary/50 rounded-lg border border-white/10">
+                    <div class="faq-question flex justify-between items-center p-6">
+                        <h3 class="text-lg font-semibold">How does the AI handle class bookings with limited spots?</h3>
+                        <svg class="faq-arrow w-6 h-6 text-green_accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-white/70 px-6 pb-6">
+                           By integrating with your booking software, the AI has real-time access to class availability. It will only offer classes with open spots and can even manage a waitlist if a class is full.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item bg-secondary/50 rounded-lg border border-white/10">
+                    <div class="faq-question flex justify-between items-center p-6">
+                        <h3 class="text-lg font-semibold">Can we send broadcast messages to all our members?</h3>
+                         <svg class="faq-arrow w-6 h-6 text-green_accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-white/70 px-6 pb-6">
+                            Yes, you can send broadcast messages to all your members who have opted-in to receive WhatsApp communication. This is perfect for announcing new classes, promotions, or important updates.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="py-8 bg-secondary border-t border-white/10">
+        <div class="container mx-auto px-6 text-center text-white/70">
+                         <div class="flex justify-center space-x-6 mb-6">
+                <a href="data-processing.html" class="hover:text-accent transition-colors">Data Processing</a>
+                <a href="terms.html" class="hover:text-accent transition-colors">Terms of Service</a>
+                <a href="privacy-policy.html" class="hover:text-accent transition-colors">Privacy Policy</a>
+                <a href="sitemap.xml" class="hover:text-accent transition-colors">Sitemap</a>
+            </div>
+            
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.closest('.faq-item');
+                item.classList.toggle('open');
+            });
+        });
+
+        const chatWindow = document.getElementById('chat-window');
+        const messages = [
+            { from: 'ai', text: "Welcome to SyncFlo Fitness! Ready to book a class or have questions about memberships?" },
+            { from: 'user', text: "I'd like to book a yoga class for tomorrow." },
+            { from: 'ai', text: 'We have a Vinyasa Flow class at 6 PM and a Restorative Yoga class at 8 PM. Which one would you like to join?', buttons: ['Vinyasa Flow - 6 PM', 'Restorative - 8 PM'] },
+            { from: 'user', text: 'Vinyasa Flow, please.' },
+            { from: 'ai', text: 'You are all booked for Vinyasa Flow tomorrow at 6 PM. We\'ll send you a reminder an hour before the class. See you on the mat!' }
+        ];
+
+        let messageIndex = 0;
+        function addMessage() {
+            if (messageIndex >= messages.length) return;
+
+            const message = messages[messageIndex];
+            const bubble = document.createElement('div');
+            bubble.className = `chat-bubble flex ${message.from === 'user' ? 'justify-end' : 'justify-start'}`;
+            
+            let buttonHTML = '';
+            if(message.buttons){
+                buttonHTML = message.buttons.map(btn => `<button class="w-full mt-2 bg-blue-500 text-white font-bold py-2 px-4 rounded-lg text-sm">${btn}</button>`).join('');
+            }
+
+            bubble.innerHTML = `<div class="${message.from === 'user' ? 'bg-whatsapp_user_bubble' : 'bg-whatsapp_ai_bubble'} p-2 rounded-lg max-w-xs shadow"><p>${message.text}</p>${buttonHTML}</div>`;
+            
+            chatWindow.appendChild(bubble);
+
+            setTimeout(() => {
+                bubble.classList.add('visible');
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }, 100);
+            
+            messageIndex++;
+            setTimeout(addMessage, 2000);
+        }
+
+        addMessage();
+
+    </script>
+</body>
+</html>
+
