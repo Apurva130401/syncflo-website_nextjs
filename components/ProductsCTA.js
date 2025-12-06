@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 
 export default function ProductsCTA() {
     return (
@@ -17,19 +18,19 @@ export default function ProductsCTA() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                        <a
-                            href="#contact"
+                        <Link
+                            href="/contact"
                             className="group px-10 py-5 rounded-full bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple text-white text-lg font-bold shadow-glow-cosmic transition-all hover:scale-105 hover:shadow-glow-cosmic-lg relative overflow-hidden"
                         >
                             <span className="relative z-10">Get Started</span>
                             <div className="absolute inset-0 bg-gradient-to-r from-neon-purple via-neon-cyan to-neon-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </a>
-                        <a
-                            href="#pricing"
+                        </Link>
+                        <Link
+                            href="/pricing"
                             className="px-10 py-5 rounded-full border-2 border-neon-cyan/40 bg-white/5 backdrop-blur-md text-white text-lg font-semibold transition-all hover:bg-neon-cyan/10 hover:border-neon-cyan hover:shadow-glow-cyan"
                         >
                             View Pricing
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

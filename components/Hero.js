@@ -1,5 +1,8 @@
 'use client'
 
+
+import Link from 'next/link'
+
 export default function Hero() {
     return (
         <section id="home" className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
@@ -35,17 +38,13 @@ export default function Hero() {
 
                     {/* Premium CTAs */}
                     <div className="flex flex-col sm:flex-row gap-5 justify-center w-full mb-12">
-                        <a
-                            href="#demo"
-                            onClick={(e) => {
-                                e.preventDefault()
-                                document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })
-                            }}
+                        <Link
+                            href="/book-demo"
                             className="group px-10 py-5 rounded-full bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple text-white text-lg font-bold shadow-glow-cosmic transition-all hover:scale-105 hover:shadow-glow-cosmic-lg relative overflow-hidden"
                         >
                             <span className="relative z-10">Book a Demo</span>
                             <div className="absolute inset-0 bg-gradient-to-r from-neon-purple via-neon-cyan to-neon-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </a>
+                        </Link>
                         <a
                             href="#features"
                             onClick={(e) => {

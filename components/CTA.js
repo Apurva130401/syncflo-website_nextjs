@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function CTA() {
     return (
         <section className="py-28 relative overflow-hidden">
@@ -29,12 +31,12 @@ export default function CTA() {
                                 <span className="relative z-10">Get Started Now</span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-neon-purple via-neon-cyan to-neon-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </a>
-                            <a
-                                href="#demo"
+                            <Link
+                                href="/book-demo"
                                 className="px-12 py-6 rounded-full border-2 border-neon-cyan/40 bg-white/5 backdrop-blur-md text-white text-xl font-semibold transition-all hover:bg-neon-cyan/10 hover:border-neon-cyan hover:shadow-glow-cyan"
                             >
                                 Book a Demo
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

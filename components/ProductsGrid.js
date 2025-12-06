@@ -1,5 +1,8 @@
 'use client'
 
+'use client'
+import Link from 'next/link'
+
 export default function ProductsGrid() {
     const products = [
         {
@@ -18,7 +21,7 @@ export default function ProductsGrid() {
                 'AI + human agent handoff',
                 'CRM integrations'
             ],
-            link: '#'
+            link: '/whatsapp'
         },
         {
             title: 'AI Voice Sales Agent',
@@ -36,7 +39,7 @@ export default function ProductsGrid() {
                 'Call logging & CRM sync',
                 'Custom voice cloning'
             ],
-            link: '#'
+            link: '/ai-voice-agent'
         },
         {
             title: 'Full AI Business Suite',
@@ -54,7 +57,7 @@ export default function ProductsGrid() {
                 'Multi-agent support',
                 'White-label options'
             ],
-            link: '#'
+            link: '/ai-suite'
         },
         {
             title: 'SyncFlo AI Assistant',
@@ -118,12 +121,12 @@ export default function ProductsGrid() {
                                 ))}
                             </ul>
 
-                            <a
+                            <Link
                                 href={product.link}
                                 className={`w-full block text-center py-3 rounded-xl font-semibold transition-all relative z-10 bg-white/5 hover:bg-white/10 border border-white/10 group-hover:border-white/20`}
                             >
                                 Learn More
-                            </a>
+                            </Link>
                         </div>
                     ))}
                 </div>
