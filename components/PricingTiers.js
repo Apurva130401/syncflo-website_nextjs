@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
 
 export default function PricingTiers() {
     const [activeTab, setActiveTab] = useState('whatsapp')
@@ -231,8 +232,8 @@ export default function PricingTiers() {
                         <button
                             onClick={toggleBilling}
                             className={`relative w-20 h-10 rounded-full p-1 transition-all duration-500 ${billingCycle === 'annual'
-                                    ? `bg-gradient-to-r ${currentData.gradient} shadow-glow-cosmic`
-                                    : 'bg-white/10 border border-white/10'
+                                ? `bg-gradient-to-r ${currentData.gradient} shadow-glow-cosmic`
+                                : 'bg-white/10 border border-white/10'
                                 }`}
                         >
                             <motion.div
@@ -254,8 +255,8 @@ export default function PricingTiers() {
                         <div
                             key={index}
                             className={`relative group flex flex-col p-1 rounded-[2.5rem] transition-all duration-500 ${plan.popular
-                                    ? 'md:-translate-y-8 z-10'
-                                    : 'hover:-translate-y-2'
+                                ? 'md:-translate-y-8 z-10'
+                                : 'hover:-translate-y-2'
                                 }`}
                         >
                             {/* Gradient Border for Popular Card */}
@@ -335,15 +336,15 @@ export default function PricingTiers() {
                                     ))}
                                 </ul>
 
-                                <button className={`w-full py-5 rounded-2xl font-bold text-lg transition-all duration-300 relative overflow-hidden group/btn ${plan.popular
-                                        ? `bg-gradient-to-r ${currentData.gradient} text-white shadow-lg hover:shadow-xl hover:scale-[1.02]`
-                                        : 'bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/20'
+                                <Link href="/contact" className={`w-full py-5 rounded-2xl font-bold text-lg transition-all duration-300 relative overflow-hidden group/btn block text-center ${plan.popular
+                                    ? `bg-gradient-to-r ${currentData.gradient} text-white shadow-lg hover:shadow-xl hover:scale-[1.02]`
+                                    : 'bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/20'
                                     }`}>
                                     <span className="relative z-10">{plan.cta}</span>
                                     {plan.popular && (
                                         <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
                                     )}
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     ))}

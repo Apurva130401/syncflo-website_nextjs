@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Check } from 'lucide-react'
+import Link from 'next/link'
 
 export default function WhatsAppPricing() {
     const [billingCycle, setBillingCycle] = useState('monthly')
@@ -90,8 +91,8 @@ export default function WhatsAppPricing() {
                         <div
                             key={index}
                             className={`relative p-8 rounded-[2.5rem] border transition-all duration-300 ${plan.popular
-                                    ? 'bg-[#0a0b1e] border-green-accent shadow-2xl shadow-green-accent/10 scale-105 z-10'
-                                    : 'bg-primary border-white/5 hover:border-white/10'
+                                ? 'bg-[#0a0b1e] border-green-accent shadow-2xl shadow-green-accent/10 scale-105 z-10'
+                                : 'bg-primary border-white/5 hover:border-white/10'
                                 }`}
                         >
                             {plan.popular && (
@@ -127,12 +128,12 @@ export default function WhatsAppPricing() {
                                 ))}
                             </ul>
 
-                            <button className={`w-full py-4 rounded-xl font-bold transition-all ${plan.popular
-                                    ? 'bg-gradient-to-r from-green-accent to-blue-accent text-primary hover:shadow-lg hover:shadow-green-accent/20'
-                                    : 'bg-white/5 text-white hover:bg-white/10'
+                            <Link href="/contact" className={`w-full py-4 rounded-xl font-bold transition-all block text-center ${plan.popular
+                                ? 'bg-gradient-to-r from-green-accent to-blue-accent text-primary hover:shadow-lg hover:shadow-green-accent/20'
+                                : 'bg-white/5 text-white hover:bg-white/10'
                                 }`}>
                                 {plan.cta}
-                            </button>
+                            </Link>
                         </div>
                     ))}
                 </div>

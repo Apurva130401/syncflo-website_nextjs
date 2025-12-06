@@ -145,7 +145,7 @@ export default function Navbar() {
                             Login
                         </a>
                         <a
-                            href="#contact"
+                            href="/contact"
                             className="px-6 py-2.5 rounded-full bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple text-white text-sm font-bold shadow-glow-cyan transition-all hover:scale-105 hover:shadow-glow-cosmic"
                         >
                             Contact Us
@@ -226,7 +226,7 @@ export default function Navbar() {
                                     Login
                                 </a>
                                 <a
-                                    href="#contact"
+                                    href="/contact"
                                     className="block text-center px-8 py-3 rounded-full bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple text-white font-bold shadow-glow-cyan"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >

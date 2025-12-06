@@ -18,7 +18,7 @@ export default function AssistantCTA() {
 
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">
                         <a
-                            href="#contact"
+                            href="/contact"
                             className="group px-10 py-5 rounded-full bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple text-white text-lg font-bold shadow-glow-cosmic transition-all hover:scale-105 hover:shadow-glow-cosmic-lg relative overflow-hidden"
                         >
                             <span className="relative z-10">Get Started Free</span>
