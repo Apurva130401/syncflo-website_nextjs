@@ -39,6 +39,16 @@ export default function Navbar() {
                 { name: 'Features', href: '/#features' },
             ]
         },
+        {
+            name: 'Services',
+            type: 'dropdown',
+            items: [
+                { name: 'Website Development', href: '/web-development' },
+                { name: 'Custom AI Agents', href: '/custom-agents' },
+                { name: 'Workflow Automation', href: '/workflow-automation' },
+                { name: 'All Services', href: '/service' },
+            ]
+        },
         { name: 'Pricing', href: '/pricing', type: 'link' },
         {
             name: 'Company',
