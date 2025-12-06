@@ -349,7 +349,7 @@ export default function AiVoiceAgent() {
                         100% { transform: translateX(-50%); }
                     }
                     .marquee-container:hover .marquee-content {
-                        animation-play-state: paused;
+                        animation-play-state: paused !important;
                     }
                     .marquee-content {
                         animation: scroll 40s linear infinite;
@@ -360,11 +360,11 @@ export default function AiVoiceAgent() {
                     <p className="text-text-secondary max-w-2xl mx-auto">Pre-trained models ready to deploy for your specific sector.</p>
                 </div>
 
-                <div className="relative w-full marquee-container group">
+                <div className="relative w-full group">
                     <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-primary to-transparent z-10 pointer-events-none"></div>
                     <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-primary to-transparent z-10 pointer-events-none"></div>
 
-                    <div className="flex overflow-hidden">
+                    <div className="flex overflow-hidden marquee-container">
                         <div className="flex gap-8 px-8 marquee-content w-max">
                             {[...industries, ...industries].map((industry, idx) => (
                                 <Link
@@ -391,6 +391,18 @@ export default function AiVoiceAgent() {
                             ))}
                         </div>
                     </div>
+
+                    <div className="flex justify-center mt-12 relative z-20">
+                        <Link
+                            href="/ai-voice-agent/industries"
+                            className="group inline-flex items-center gap-2 text-white hover:text-sales-orange transition-colors font-medium text-lg px-6 py-3 rounded-full border border-white/10 hover:bg-white/5 bg-secondary/50 backdrop-blur-sm"
+                        >
+                            View All Industries
+                            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </Link>
+                    </div>
                 </div>
             </section>
 
@@ -403,16 +415,16 @@ export default function AiVoiceAgent() {
 }
 
 const industries = [
-    { name: 'Mortgage', emoji: '🏠', link: '#' },
-    { name: 'Recruitment', emoji: '👥', link: '#' },
-    { name: 'Healthcare', emoji: '🏥', link: '#' },
+    { name: 'Mortgage', emoji: '🏠', link: '/ai-voice-agent/mortgage' },
+    { name: 'Recruitment', emoji: '👥', link: '/ai-voice-agent/recruitment' },
+    { name: 'Healthcare', emoji: '🏥', link: '/ai-voice-agent/healthcare' },
     { name: 'Car Dealership', emoji: '🚗', link: '/ai-voice-agent/car-dealership' },
-    { name: 'Real Estate', emoji: '🏢', link: '#' },
-    { name: 'Insurance', emoji: '🛡️', link: '#' },
-    { name: 'Legal', emoji: '⚖️', link: '#' },
-    { name: 'Education', emoji: '🎓', link: '#' },
-    { name: 'SaaS', emoji: '💻', link: '#' },
-    { name: 'E-commerce', emoji: '🛍️', link: '#' },
+    { name: 'Real Estate', emoji: '🏢', link: '/ai-voice-agent/real-estate' },
+    { name: 'Insurance', emoji: '🛡️', link: '/ai-voice-agent/insurance' },
+    { name: 'Legal', emoji: '⚖️', link: '/ai-voice-agent/legal' },
+    { name: 'Agencies', emoji: '🚀', link: '/ai-voice-agent/agency' },
+    { name: 'SaaS', emoji: '💻', link: '/ai-voice-agent/saas' },
+    { name: 'E-commerce', emoji: '🛍️', link: '/ai-voice-agent/e-commerce' },
 ]
 
 const faqs = [

@@ -32,9 +32,11 @@ export default function Navbar() {
             type: 'dropdown',
             items: [
                 { name: 'All Products', href: '/products' },
-                { name: 'WhatsApp Automation', href: '/whatsapp', badge: 'Hot' },
+                { name: 'WhatsApp Automation', href: '/whatsapp' },
+                { name: 'AI Voice Agent', href: '/ai-voice-agent' },
                 { name: 'AI Assistant', href: '/assistant', badge: 'New' },
-                { name: 'Features', href: '#features' },
+                { name: 'Full AI Business Suite', href: '/ai-suite' },
+                { name: 'Features', href: '/#features' },
             ]
         },
         { name: 'Pricing', href: '/pricing', type: 'link' },

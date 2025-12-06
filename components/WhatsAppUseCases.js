@@ -54,40 +54,56 @@ export default function WhatsAppUseCases({ cases, sectionTitle, sectionSubtitle,
             </div>
 
             {variant === 'marquee' ? (
-                <div className="w-full overflow-hidden">
-                    <div
-                        className="flex gap-6 w-max hover:[animation-play-state:paused]"
-                        style={{
-                            animation: 'marquee 40s linear infinite'
-                        }}
-                    >
-                        {marqueeCases.map((item, index) => {
-                            const IconComponent = iconMap[item.icon] || ShoppingCart
-                            return (
-                                <div
-                                    key={index}
-                                    className="w-[350px] p-8 rounded-3xl bg-secondary border border-white/5 hover:border-white/10 hover:bg-white/5 transition-all duration-300 group flex flex-col h-full shrink-0"
-                                >
-                                    <div className={`w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 ${item.color} group-hover:scale-110 transition-transform duration-300`}>
-                                        <IconComponent className="w-7 h-7" />
-                                    </div>
-                                    <h3 className="text-xl font-bold font-display text-white mb-3">{item.title}</h3>
-                                    <p className="text-text-secondary mb-6 flex-grow">{item.desc}</p>
-
-                                    <Link
-                                        href={item.href || '#'}
-                                        className="inline-flex items-center text-sm font-semibold text-green-accent hover:text-green-400 transition-colors mt-auto"
+                <div className="w-full relative group">
+                    <div className="overflow-hidden">
+                        <div
+                            className="flex gap-6 w-max marquee-content"
+                            style={{
+                                animation: 'marquee 40s linear infinite'
+                            }}
+                        >
+                            {marqueeCases.map((item, index) => {
+                                const IconComponent = iconMap[item.icon] || ShoppingCart
+                                return (
+                                    <div
+                                        key={index}
+                                        className="w-[350px] p-8 rounded-3xl bg-secondary border border-white/5 hover:border-white/10 hover:bg-white/5 transition-all duration-300 group/card flex flex-col h-full shrink-0"
                                     >
-                                        Learn More <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                                    </Link>
-                                </div>
-                            )
-                        })}
+                                        <div className={`w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 ${item.color} group-hover/card:scale-110 transition-transform duration-300`}>
+                                            <IconComponent className="w-7 h-7" />
+                                        </div>
+                                        <h3 className="text-xl font-bold font-display text-white mb-3">{item.title}</h3>
+                                        <p className="text-text-secondary mb-6 flex-grow">{item.desc}</p>
+
+                                        <Link
+                                            href={item.href || '#'}
+                                            className="inline-flex items-center text-sm font-semibold text-green-accent hover:text-green-400 transition-colors mt-auto"
+                                        >
+                                            Learn More <ArrowRight className="w-4 h-4 ml-2 group-hover/card:translate-x-1 transition-transform" />
+                                        </Link>
+                                    </div>
+                                )
+                            })}
+                        </div>
                     </div>
+
+                    <div className="flex justify-center mt-12">
+                        <Link
+                            href="/whatsapp/industries"
+                            className="group inline-flex items-center gap-2 text-white hover:text-green-accent transition-colors font-medium text-lg px-6 py-3 rounded-full border border-white/10 hover:bg-white/5 bg-secondary/50 backdrop-blur-sm"
+                        >
+                            View All Industries
+                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                    </div>
+
                     <style jsx>{`
                         @keyframes marquee {
                             0% { transform: translateX(0); }
                             100% { transform: translateX(-50%); }
+                        }
+                        .marquee-content:hover {
+                            animation-play-state: paused !important;
                         }
                     `}</style>
                 </div>
