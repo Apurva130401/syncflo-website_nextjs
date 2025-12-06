@@ -3,8 +3,8 @@
 import { industryData } from '../data'
 import VoiceAgentLanding from '../../../components/VoiceAgentLanding'
 
-export default function LegalAgent() {
-    const data = industryData['legal']
+export default function BPOAgent() {
+    const data = industryData['bpo']
 
     return <VoiceAgentLanding data={data} />
 }
