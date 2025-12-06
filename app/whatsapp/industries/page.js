@@ -1,9 +1,9 @@
 'use client'
 
-import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
+import Navbar from '../../../components/Navbar'
+import Footer from '../../../components/Footer'
 import Link from 'next/link'
-import { industryData } from '../../app/whatsapp/data'
+import { industryData } from '../data'
 
 export default function WhatsAppIndustries() {
     // Generate industries list from the data file dynamically
