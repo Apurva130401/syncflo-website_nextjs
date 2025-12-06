@@ -23,8 +23,8 @@ export default function Footer() {
                         <ul className="space-y-4">
                             <li><a href="#features" className="text-zinc-500 hover:text-white transition-colors">Features</a></li>
                             <li><a href="#integrations" className="text-zinc-500 hover:text-white transition-colors">Integrations</a></li>
-                            <li><a href="#pricing" className="text-zinc-500 hover:text-white transition-colors">Pricing</a></li>
-                            <li><a href="#changelog" className="text-zinc-500 hover:text-white transition-colors">Changelog</a></li>
+                            <li><a href="/pricing" className="text-zinc-500 hover:text-white transition-colors">Pricing</a></li>
+                            <li><a href="https://docs.syncflo.xyz" className="text-zinc-500 hover:text-white transition-colors">Docs</a></li>
                         </ul>
                     </div>
 
@@ -33,9 +33,9 @@ export default function Footer() {
                         <h4 className="text-white font-bold text-lg mb-6">Company</h4>
                         <ul className="space-y-4">
                             <li><a href="#about" className="text-zinc-500 hover:text-white transition-colors">About Us</a></li>
-                            <li><a href="#careers" className="text-zinc-500 hover:text-white transition-colors">Careers</a></li>
-                            <li><a href="#blog" className="text-zinc-500 hover:text-white transition-colors">Blog</a></li>
-                            <li><a href="#contact" className="text-zinc-500 hover:text-white transition-colors">Contact</a></li>
+                            <li><a href="https://careers.syncflo.xyz" className="text-zinc-500 hover:text-white transition-colors">Careers</a></li>
+                            <li><a href="https://blog.syncflo.xyz" className="text-zinc-500 hover:text-white transition-colors">Blog</a></li>
+                            <li><a href="/contact" className="text-zinc-500 hover:text-white transition-colors">Contact</a></li>
                         </ul>
                     </div>
 
@@ -43,9 +43,9 @@ export default function Footer() {
                     <div>
                         <h4 className="text-white font-bold text-lg mb-6">Legal</h4>
                         <ul className="space-y-4">
-                            <li><a href="#privacy" className="text-zinc-500 hover:text-white transition-colors">Privacy Policy</a></li>
-                            <li><a href="#terms" className="text-zinc-500 hover:text-white transition-colors">Terms of Service</a></li>
-                            <li><a href="#cookie" className="text-zinc-500 hover:text-white transition-colors">Cookie Policy</a></li>
+                            <li><a href="/privacy" className="text-zinc-500 hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="/terms" className="text-zinc-500 hover:text-white transition-colors">Terms of Service</a></li>
+                            <li><a href="/data-processing" className="text-zinc-500 hover:text-white transition-colors">Data Processing</a></li>
                         </ul>
                     </div>
                 </div>
