@@ -228,6 +228,178 @@ export default function WebDevLanding() {
                 </div>
             </section>
 
+            {/* Featured Projects - Digital Monuments (Sticky & Alternating) */}
+            <section className="py-32 bg-[#020205] border-t border-white/5 relative">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.05]"></div>
+                </div>
+
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="flex flex-col lg:flex-row gap-24 items-start">
+
+                        {/* Left Side - Sticky Title */}
+                        <div className="lg:w-1/3 h-fit lg:sticky lg:top-48 mb-12 lg:mb-0">
+                            <div className="text-purple-500 font-medium tracking-widest uppercase mb-4">Selected Works</div>
+                            <h2 className="text-4xl md:text-7xl font-bold font-display leading-tight mb-8">
+                                Digital <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Monuments</span>
+                            </h2>
+                            <p className="text-xl text-white/50 leading-relaxed">
+                                We don't build pages. We build empires. <br />
+                                <span className="text-white">Real revenue engines</span> engineered for scale.
+                            </p>
+                        </div>
+
+                        {/* Right Side - Alternating Cards */}
+                        <div className="lg:w-2/3 flex flex-col gap-32">
+                            {/* Case 1: FinTech High Speed */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                                className="group relative"
+                            >
+                                <div className="grid grid-cols-1 gap-8">
+                                    <div className="relative h-[300px] md:h-[500px] rounded-[2rem] overflow-hidden border border-white/10 group-hover:border-purple-500/50 transition-colors duration-500">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black"></div>
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            {/* Abstract UI Representation */}
+                                            <div className="relative w-3/4 h-3/4 bg-[#0B0F19] rounded-xl border border-white/10 p-6 flex flex-col gap-4 group-hover:scale-105 transition-transform duration-700">
+                                                <div className="flex justify-between items-center pb-4 border-b border-white/5">
+                                                    <div className="w-24 h-6 bg-white/10 rounded-full animate-pulse"></div>
+                                                    <div className="w-8 h-8 rounded-full bg-green-500/20"></div>
+                                                </div>
+                                                <div className="flex gap-4 h-full items-end">
+                                                    <div className="w-1/4 h-[40%] bg-purple-500/20 rounded-t-lg"></div>
+                                                    <div className="w-1/4 h-[70%] bg-purple-500/40 rounded-t-lg"></div>
+                                                    <div className="w-1/4 h-[50%] bg-purple-500/30 rounded-t-lg"></div>
+                                                    <div className="w-1/4 h-[90%] bg-purple-500 rounded-t-lg shadow-[0_0_30px_rgba(168,85,247,0.5)]"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-3xl md:text-4xl font-bold mb-4 group-hover:text-purple-400 transition-colors">NeonVerse Exchange</h3>
+                                        <div className="flex flex-wrap gap-3 mb-6">
+                                            {['FinTech', 'Real-Time', 'WebGL'].map(tag => (
+                                                <span key={tag} className="px-3 py-1 rounded-full border border-white/10 text-xs font-medium uppercase tracking-wider text-white/60">
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <p className="text-white/50 mb-8 leading-relaxed">
+                                            A high-frequency trading terminal handling $500M+ daily volume. Sub-50ms latency updates via WebSockets and a custom WebGL charting engine that renders 1M+ data points without stutter.
+                                        </p>
+                                        <div className="grid grid-cols-2 gap-8 py-6 border-y border-white/10">
+                                            <div>
+                                                <div className="text-3xl font-bold text-white mb-1">50ms</div>
+                                                <div className="text-xs text-white/40 uppercase tracking-widest">Latency</div>
+                                            </div>
+                                            <div>
+                                                <div className="text-3xl font-bold text-white mb-1">$500M</div>
+                                                <div className="text-xs text-white/40 uppercase tracking-widest">Daily Vol</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+
+                            {/* Case 2: Luxury E-commerce */}
+                            <motion.div
+                                initial={{ opacity: 0, x: -100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                                className="group relative"
+                            >
+                                <div className="grid grid-cols-1 gap-8">
+                                    <div className="relative h-[300px] md:h-[500px] rounded-[2rem] overflow-hidden border border-white/10 group-hover:border-amber-500/50 transition-colors duration-500">
+                                        <div className="absolute inset-0 bg-gradient-to-bl from-amber-950 to-black"></div>
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            {/* Abstract 3D shape */}
+                                            <div className="w-64 h-64 bg-amber-500/20 rounded-full blur-3xl animate-pulse"></div>
+                                            <div className="relative z-10 w-48 h-48 border border-amber-500/30 rotate-45 backdrop-blur-sm group-hover:rotate-90 transition-transform duration-[1.5s]"></div>
+                                            <div className="absolute z-10 w-40 h-40 border border-amber-200/50 rotate-12 group-hover:-rotate-12 transition-transform duration-[1.5s]"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-3xl md:text-4xl font-bold mb-4 group-hover:text-amber-400 transition-colors">Velvet & Gold</h3>
+                                        <div className="flex flex-wrap gap-3 mb-6">
+                                            {['E-Commerce', '3D Configurator', 'Luxury'].map(tag => (
+                                                <span key={tag} className="px-3 py-1 rounded-full border border-white/10 text-xs font-medium uppercase tracking-wider text-white/60">
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <p className="text-white/50 mb-8 leading-relaxed">
+                                            We replaced static product images with a real-time ray-traced 3D configurator. Customers can view diamond refraction and gold textures in 4K detail, leading to a massive spike in engagement.
+                                        </p>
+                                        <div className="grid grid-cols-2 gap-8 py-6 border-y border-white/10">
+                                            <div>
+                                                <div className="text-3xl font-bold text-white mb-1">400%</div>
+                                                <div className="text-xs text-white/40 uppercase tracking-widest">Conv. Rate</div>
+                                            </div>
+                                            <div>
+                                                <div className="text-3xl font-bold text-white mb-1">2x</div>
+                                                <div className="text-xs text-white/40 uppercase tracking-widest">AOV</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+
+                            {/* Case 3: AI Core */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                                className="group relative"
+                            >
+                                <div className="grid grid-cols-1 gap-8">
+                                    <div className="relative h-[300px] md:h-[500px] rounded-[2rem] overflow-hidden border border-white/10 group-hover:border-cyan-500/50 transition-colors duration-500">
+                                        <div className="absolute inset-0 bg-gradient-to-tr from-cyan-950 to-black"></div>
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            {/* Neural Network Viz */}
+                                            <div className="relative w-full h-full flex items-center justify-center opacity-50">
+                                                <div className="absolute w-[120%] h-[1px] bg-cyan-500/50 rotate-45"></div>
+                                                <div className="absolute w-[120%] h-[1px] bg-cyan-500/50 -rotate-45"></div>
+                                                <div className="absolute w-[1px] h-[120%] bg-cyan-500/50"></div>
+                                                <div className="w-32 h-32 bg-cyan-500/20 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-3xl md:text-4xl font-bold mb-4 group-hover:text-cyan-400 transition-colors">Neural Nexus</h3>
+                                        <div className="flex flex-wrap gap-3 mb-6">
+                                            {['AI', 'Series A', 'Dashboard'].map(tag => (
+                                                <span key={tag} className="px-3 py-1 rounded-full border border-white/10 text-xs font-medium uppercase tracking-wider text-white/60">
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <p className="text-white/50 mb-8 leading-relaxed">
+                                            A mission-control dashboard for a deep-learning infrastructure startup. We visualized terabytes of training data in real-time, directly contributing to their successful $12M Series A raise.
+                                        </p>
+                                        <div className="grid grid-cols-2 gap-8 py-6 border-y border-white/10">
+                                            <div>
+                                                <div className="text-3xl font-bold text-white mb-1">$12M</div>
+                                                <div className="text-xs text-white/40 uppercase tracking-widest">Funding</div>
+                                            </div>
+                                            <div>
+                                                <div className="text-3xl font-bold text-white mb-1">10TB+</div>
+                                                <div className="text-xs text-white/40 uppercase tracking-widest">Data Viz</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Process Section - Sticky Stack */}
             <section ref={processRef} className="relative bg-black py-32">
                 <div className="container mx-auto px-6">
