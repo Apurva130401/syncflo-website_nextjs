@@ -27,46 +27,48 @@ export default function PricingTiers() {
             plans: [
                 {
                     name: 'Starter',
-                    description: 'Essential automation for small businesses.',
-                    price: { monthly: 99, annual: 79 },
+                    description: 'Perfect for small businesses getting started with AI automation.',
+                    price: { monthly: 49, annual: 39 },
                     features: [
-                        '1,000 Conversations/mo',
-                        '1 Business Number',
-                        'Basic Chatbot Flows',
-                        'Notion/Sheets Logging',
-                        'SyncFlo AI Assistant'
+                        '1,000 AI conversations/month',
+                        'AI WhatsApp Chatbot',
+                        'Appointment Booking AI',
+                        '3 Workflow automations',
+                        'Human Handoff Inbox',
+                        'AI Email Assistant'
                     ],
-                    cta: 'Get Started',
+                    cta: 'Choose Starter',
                     popular: false
                 },
                 {
                     name: 'Growth',
-                    description: 'Advanced tools for scaling operations.',
-                    price: { monthly: 249, annual: 199 },
+                    description: 'Advanced automation for growing businesses.',
+                    price: { monthly: 149, annual: 119 },
                     features: [
-                        '5,000 Conversations/mo',
-                        '3 Business Numbers',
-                        'Catalog Integration',
-                        'Marketing Broadcasts',
-                        'CRM Integration',
-                        'SyncFlo AI Assistant'
+                        'Everything in Starter, plus:',
+                        '5,000 AI conversations/month',
+                        'Advanced AI Sales Agent',
+                        'Full CRM + Notion Integration',
+                        'Advanced Analytics',
+                        'AI Email Assistant'
                     ],
-                    cta: 'Start Growth',
+                    cta: 'Choose Growth',
                     popular: true
                 },
                 {
-                    name: 'Enterprise',
-                    description: 'Custom solutions for large organizations.',
-                    price: 'Custom',
+                    name: 'Business',
+                    description: 'For scaling companies needing deep AI automation and high throughput.',
+                    price: { monthly: 299, annual: 239 },
                     features: [
-                        'Unlimited Conversations',
-                        'Multi-agent Dashboard',
-                        'White-label Options',
-                        'Dedicated Success Manager',
-                        'Custom SLA & Support',
-                        'SyncFlo AI Assistant'
+                        'Everything in Growth, plus:',
+                        '15,000 AI conversations/month',
+                        'Unlimited Workflow automations',
+                        'Custom AI Personas',
+                        'Vapi Voice-Agent Integration',
+                        'Dedicated Account Manager',
+                        'AI Email Assistant'
                     ],
-                    cta: 'Contact Sales',
+                    cta: 'Choose Business',
                     popular: false
                 }
             ]
@@ -86,7 +88,7 @@ export default function PricingTiers() {
                         '1 Phone Number',
                         'Calendar Integration',
                         'Basic Call Logging',
-                        'SyncFlo AI Assistant'
+                        'AI Email Assistant'
                     ],
                     cta: 'Get Started',
                     popular: false
@@ -101,7 +103,7 @@ export default function PricingTiers() {
                         'CRM Integration',
                         'Priority Support',
                         'Advanced Analytics',
-                        'SyncFlo AI Assistant'
+                        'AI Email Assistant'
                     ],
                     cta: 'Start Performance',
                     popular: true
@@ -116,7 +118,7 @@ export default function PricingTiers() {
                         'Dedicated Account Manager',
                         'API Access',
                         'White-label Options',
-                        'SyncFlo AI Assistant'
+                        'AI Email Assistant'
                     ],
                     cta: 'Contact Sales',
                     popular: false
@@ -138,7 +140,7 @@ export default function PricingTiers() {
                         '1,000 Conversations',
                         '500 AI Call Minutes',
                         '1 WhatsApp + 1 Phone Number',
-                        'SyncFlo AI Assistant'
+                        'AI Email Assistant'
                     ],
                     cta: 'Get Started',
                     popular: false
@@ -153,7 +155,7 @@ export default function PricingTiers() {
                         '2,000 Call Minutes',
                         'Unified CRM Integration',
                         'Multi-channel Analytics',
-                        'SyncFlo AI Assistant'
+                        'AI Email Assistant'
                     ],
                     cta: 'Get Full Suite',
                     popular: true
@@ -168,7 +170,7 @@ export default function PricingTiers() {
                         'Custom AI Model Training',
                         'Dedicated Engineering Support',
                         'On-premise Deployment Option',
-                        'SyncFlo AI Assistant'
+                        'AI Email Assistant'
                     ],
                     cta: 'Contact Sales',
                     popular: false
@@ -325,13 +327,20 @@ export default function PricingTiers() {
 
                                 <ul className="space-y-5 mb-10 flex-grow">
                                     {plan.features.map((feature, i) => (
-                                        <li key={i} className="flex items-start gap-4 text-text-secondary group-hover:text-white/90 transition-colors">
-                                            <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${currentData.gradient} flex items-center justify-center shrink-0 shadow-sm mt-0.5`}>
+                                        <li key={i} className={`flex items-start gap-4 transition-colors ${feature === 'AI Email Assistant' ? 'text-white font-medium' : 'text-text-secondary group-hover:text-white/90'}`}>
+                                            <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 shadow-sm mt-0.5 ${feature === 'AI Email Assistant' ? 'bg-gradient-to-br from-neon-cyan to-neon-blue' : `bg-gradient-to-br ${currentData.gradient}`}`}>
                                                 <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                                                 </svg>
                                             </div>
-                                            <span className="text-sm leading-relaxed">{feature}</span>
+                                            <span className="text-sm leading-relaxed flex items-center flex-wrap gap-2">
+                                                {feature}
+                                                {feature === 'AI Email Assistant' && (
+                                                    <span className="px-2 py-0.5 rounded-full bg-neon-cyan/20 text-neon-cyan text-[10px] font-bold uppercase tracking-wider border border-neon-cyan/30">
+                                                        Complimentary
+                                                    </span>
+                                                )}
+                                            </span>
                                         </li>
                                     ))}
                                 </ul>
@@ -349,6 +358,23 @@ export default function PricingTiers() {
                         </div>
                     ))}
                 </div>
+
+                {/* Detailed Plan Button (WhatsApp Only) */}
+                {activeTab === 'whatsapp' && (
+                    <div className="mt-16 flex justify-center animate-fade-in-up">
+                        <Link
+                            href="/whatsapp-pricing"
+                            className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300"
+                        >
+                            <span className="text-lg font-bold text-white">View Detailed Plan</span>
+                            <svg className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                            {/* Glow effect */}
+                            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-accent/20 to-blue-accent/20 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300"></div>
+                        </Link>
+                    </div>
+                )}
             </div>
         </section>
     )

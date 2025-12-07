@@ -85,26 +85,70 @@ export default function ServicePage({
                 <section className="py-24 bg-secondary/30 relative">
                     <div className="container mx-auto px-6">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {features.map((feature, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1 }}
-                                    className="p-8 rounded-3xl bg-[#0B0F19] border border-white/5 hover:border-white/10 transition-colors group"
-                                >
-                                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-white/5 to-white/0 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
-                                        {feature.icon || "✨"}
+                            {features.map((feature, idx) => {
+                                const CardContent = (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: idx * 0.1 }}
+                                        className="group glass-panel p-10 rounded-3xl flex flex-col h-full transition-all duration-300 hover:transform hover:-translate-y-3 relative overflow-hidden"
+                                    >
+                                        {/* Hover Gradient Overlay */}
+                                        {feature.gradient && (
+                                            <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                                        )}
+
+                                        {/* Icon */}
+                                        <div className="relative z-10 mb-6">
+                                            <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${feature.gradient || 'from-white/5 to-white/0'} flex items-center justify-center text-4xl shadow-glow-cosmic opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300`}>
+                                                {feature.icon || "✨"}
+                                            </div>
+                                        </div>
+
+                                        {/* Header with Tag */}
+                                        <div className="relative z-10 flex justify-between items-start mb-6">
+                                            <h3 className="text-2xl font-bold font-display text-white group-hover:text-white transition-all">
+                                                {feature.title}
+                                            </h3>
+                                        </div>
+
+                                        {/* Tag */}
+                                        {feature.tag && (
+                                            <span className={`relative z-10 self-start px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider ${feature.tagColor} mb-6`}>
+                                                {feature.tag}
+                                            </span>
+                                        )}
+
+                                        {/* Description */}
+                                        <p className="relative z-10 text-text-secondary mb-8 flex-grow leading-relaxed text-lg group-hover:text-white/90 transition-colors">
+                                            {feature.description}
+                                        </p>
+
+                                        {/* Learn More Link (Visual Only) */}
+                                        {feature.link && (
+                                            <span
+                                                className="relative z-10 inline-flex items-center text-sm font-bold text-white group-hover:text-white transition-colors"
+                                            >
+                                                {feature.linkText || 'Learn More'}
+                                                <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                </svg>
+                                            </span>
+                                        )}
+                                    </motion.div>
+                                )
+
+                                return feature.link ? (
+                                    <Link key={idx} href={feature.link} className="block h-full group">
+                                        {CardContent}
+                                    </Link>
+                                ) : (
+                                    <div key={idx} className="h-full">
+                                        {CardContent}
                                     </div>
-                                    <h3 className="text-2xl font-bold font-display mb-4 text-white">
-                                        {feature.title}
-                                    </h3>
-                                    <p className="text-text-secondary leading-relaxed">
-                                        {feature.description}
-                                    </p>
-                                </motion.div>
-                            ))}
+                                )
+                            })}
                         </div>
                     </div>
                 </section>

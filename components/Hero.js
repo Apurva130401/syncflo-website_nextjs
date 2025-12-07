@@ -32,8 +32,7 @@ export default function Hero() {
 
                     {/* Description */}
                     <p className="text-xl md:text-2xl text-text-secondary mb-10 max-w-2xl mx-auto leading-relaxed">
-                        Deploy powerful AI Chatbots for WhatsApp and Voice Calls.
-                        <span className="text-white font-semibold"> Reduce hiring costs</span> and scale effortlessly.
+                        Deploy powerful AI Chatbots for WhatsApp and Voice Calls, or build custom AI solutions with our <span className="text-white font-semibold">expert services</span>. Reduce hiring costs and scale effortlessly.
                     </p>
 
                     {/* Premium CTAs */}
@@ -54,6 +53,16 @@ export default function Hero() {
                             className="px-10 py-5 rounded-full border-2 border-neon-cyan/40 bg-white/5 backdrop-blur-md text-white text-lg font-semibold transition-all hover:bg-neon-cyan/10 hover:border-neon-cyan hover:shadow-glow-cyan"
                         >
                             View Products
+                        </a>
+                        <a
+                            href="#services"
+                            onClick={(e) => {
+                                e.preventDefault()
+                                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
+                            }}
+                            className="px-10 py-5 rounded-full border-2 border-purple-500/40 bg-white/5 backdrop-blur-md text-white text-lg font-semibold transition-all hover:bg-purple-500/10 hover:border-purple-500 hover:shadow-glow-purple"
+                        >
+                            View Services
                         </a>
                     </div>
                 </div>

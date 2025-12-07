@@ -15,6 +15,8 @@ import CTA from '../components/CTA'
 import Footer from '../components/Footer'
 import Chatbot from '../components/Chatbot'
 
+import Services from '../components/Services'
+
 export default function Home() {
     useEffect(() => {
         AOS.init({
@@ -29,6 +31,7 @@ export default function Home() {
             <Hero />
             <TrustMetrics />
             <Features />
+            <Services />
             <WhyChooseUs />
             <HowItWorks />
             <FAQ />
