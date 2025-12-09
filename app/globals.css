@@ -14,7 +14,6 @@ body {
             rgb(var(--background-start-rgb)),
             rgb(var(--background-end-rgb)));
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
 /* Enhanced Glassmorphism with Cosmic Tints */
